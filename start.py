@@ -27,7 +27,10 @@ def new_food():
 
 #class for all characters, including user
 class Character:
-    pass
+    love = 0
+    purpose = ""
+    movie = ""
+    age = 21
     def __init__(self, name):
         self.name = name
         self.love = 0
@@ -51,17 +54,12 @@ class Character:
         self.decision = demand_decision()
         line_break()
     def love_update(self, n):
-        try:
-            self.love = self.love + n
-        except:
-            self.love = n
+        self.love = self.love + n
         if (self.love > 10):
             self.love = 10
         elif (self.love < 1):
             self.love = 1
-        else:
-            self.love = self.love
-            announce("Your love meter is " + str(self.love) + " out of 10.")
+        announce("Your love meter is " + str(self.love) + " out of 10.")
 
 
 
@@ -82,7 +80,7 @@ def announce(announcement):
     input()
 
 def get_fired():
-    announce("Your parents say you're a fuck-up, and they're probably right. YOU GOT FIRED.")
+    announce("YOU GOT FIRED.")
     end_screen()
 
 #screen tools
@@ -224,7 +222,7 @@ manager.speak("Ok, " + user.name + ". Let's meet your new teammates.")
 announce("You and " + manager.name + " walk over to the wine aisles.")
 
 #meet coworker1
-coworker1.speak("Hi, my name is " + coworker1.name + ". My favorite ice cream is moose tracks and I would use they/them. Nice to meet you.")
+coworker1.speak("Hi, my name is " + coworker1.name + ". My favorite ice cream is moosetracks and I use they/them. Nice to meet you.")
 user.decide_speech("I love moosetracks too!", "I really don't like moosetracks but we can still be friends I guess.")
 
 #coworker1 first impression
@@ -249,16 +247,16 @@ user.decide_action("Embrace incoming ambush hug", "Go for the knuckle touch")
 
 #coworker2 first impression
 if user.decision == 1:
-    announce("You and " + coworker2.name + " gently caress each other's bodies.")
+    announce("You and " + coworker2.name + " share a quick hug.")
     coworker2.speak("The sweet warmth of friendship!")
     user.love_update(1)
 elif user.decision == 2:
-    coworker2.speak("UHGGG.")
+    coworker2.speak("OW!!")
     coworker2.speak("*BREATHES HEAVILY*")
-    coworker2.speak("You friggin' punched me in the chest, dude.")
+    coworker2.speak("You friggin' punched me in the chest, what was that??")
     manager.speak("Oh my god " + coworker2.name + ", are you alright?")
-    coworker2.speak("I'll be fine.")
-    user.love_update(-2)
+    coworker2.speak("I'll be fine but I think I need the rest of the day off to recover.")
+    user.love_update(-3)
 
 #shift activities
 refresh_screen()
